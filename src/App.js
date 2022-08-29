@@ -1,9 +1,12 @@
+import Navbar from "./components/Navbar";
 
 
-function App() {
-  return (
-    <h1>Hello World</h1>
-  );
+function App(props) {
+    return (
+        <>
+        <Navbar name = 'Brian' city = 'Chicago' />
+        </> 
+    );
 }
 
 export default App;
