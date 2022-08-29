@@ -3,8 +3,6 @@
 import React from 'react'
 
 export default function Navbar(props) {
-    console.log('Hello this is the navbar component')
-    console.log(props)
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
