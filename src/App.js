@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Button from "./components/Button";
 import Navbar from "./components/Navbar";
+import Racers from './components/Racers';
 
 
 function App(props) {
@@ -46,11 +47,7 @@ function App(props) {
                 <h3 className = 'text-center'>Total: {count}</h3>
                 {buttons.map((b,i) => <Button color = {b.color} step = {b.step} 
                     key = {i} handleClick = {handleClick}/>)}
-                <form onSubmit = {handleRacerSubmit}>
-                    <input type='text' className = 'form-control' name = 'season' />
-                    <input type = 'submit' value = 'Submit' />
-                </form>
-                {racers.map((r, idx) => <p key = {idx}>{r.points}</p>)}
+                <Racers handleRacerSubmit={handleRacerSubmit} racers={racers} />
             </div> 
         </> 
     );
