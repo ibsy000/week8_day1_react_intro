@@ -1,13 +1,39 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function Racers(props) {
     let tableHeaders = ['#', 'First', 'Last', 'Points', 'Wins', 'Nationality', 'Constructor']
+
+    const [racers, setRacers] = useState([])
+    const [season, setSeason] = useState(2022)
+    const [round, setRound] = useState(1)
+
+     // Create an effect -> function to execure after every render
+    useEffect(() => {
+        console.log('useEffect effect callback executed')
+        fetch(`http://ergast.com/api/f1/${season}/${round}/driverStandings.json`)
+            .then(res => res.json())
+            .then(data => {
+                let racerStandings = data.MRData.StandingsTable.StandingsLists[0].DriverStandings
+                setRacers(racerStandings)
+            })
+    }, [season, round]) // [season, round] - dependency will only do this effect if state has changed
+            // if the dependency is [] empty array your effect doesn't depend on 
+            // any values from props or state, so it never needs to re-run
+
+    function handleRacerSubmit(event){
+        event.preventDefault()
+        let newSeason = event.target.season.value
+        let newRound = event.target.round.value
+        setSeason(newSeason)
+        setRound(newRound)
+    }
+
     return (
         <div className='row py-3'>
 
             <h4 className="text-center">Driver Standings</h4>
 
-            <form onSubmit = {props.handleRacerSubmit}>
+            <form onSubmit = {handleRacerSubmit}>
                 <div className="row">
                     <div className="col-12 col-md-6">
                         <input type="text" className="form-control" name="season" 
@@ -32,7 +58,7 @@ export default function Racers(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.racers.map((racer, idx) => {
+                    {racers.map((racer, idx) => {
                         return( <tr key={idx}>
                             <th>{racer.position}</th>
                             <td>{racer.Driver.givenName}</td>
