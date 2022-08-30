@@ -14,18 +14,19 @@ function App(props) {
 
     const [count, setCount] = useState(0)
     const [racers, setRacers] = useState([])
+    const [season, setSeason] = useState(2022)
+    const [round, setRound] = useState(1)
 
     // Create an effect -> function to execure after every render
     useEffect(() => {
-        console.log('useEffect effect callback executed')
-        fetch('http://ergast.com/api/f1/2022/1/driverStandings.json')
+        // console.log('useEffect effect callback executed')
+        fetch(`http://ergast.com/api/f1/${season}/${round}/driverStandings.json`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 let racerStandings = data.MRData.StandingsTable.StandingsLists[0].DriverStandings
                 setRacers(racerStandings)
             })
-    }, []) // [] - dependency will only do this effect if state has changed
+    }, [season, round]) // [season, round] - dependency will only do this effect if state has changed
             // if the dependency is [] empty array your effect doesn't depend on 
             // any values from props or state, so it never needs to re-run
 
@@ -36,7 +37,10 @@ function App(props) {
 
     function handleRacerSubmit(event){
         event.preventDefault()
-        console.log(event)
+        let newSeason = event.target.season.value
+        let newRound = event.target.round.value
+        setSeason(newSeason)
+        setRound(newRound)
     }
 
     return (

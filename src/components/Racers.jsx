@@ -20,7 +20,7 @@ export default function Racers(props) {
                 </div>
                 <div className="row">
                     <div className='col'>
-                        <input type="submit" value="" className="btn btn-primary w-100" />
+                        <input type="submit" value="Submit" className="btn btn-primary w-100" />
                     </div>
                 </div>
             </form>
