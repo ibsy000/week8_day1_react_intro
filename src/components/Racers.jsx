@@ -4,10 +4,25 @@ export default function Racers(props) {
     let tableHeaders = ['#', 'First', 'Last', 'Points', 'Wins', 'Nationality', 'Constructor']
     return (
         <div className='row py-3'>
+
             <h4 className="text-center">Driver Standings</h4>
+
             <form onSubmit = {props.handleRacerSubmit}>
-                <input type='text' className = 'form-control' name = 'season' />
-                <input type = 'submit' value = 'Submit' />
+                <div className="row">
+                    <div className="col-12 col-md-6">
+                        <input type="text" className="form-control" name="season" 
+                            placeholder='Enter Season' />
+                    </div>
+                    <div className="col-12 col-md-6">
+                        <input type="text" className="form-control" name="round" 
+                            placeholder='Enter Round' />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className='col'>
+                        <input type="submit" value="" className="btn btn-primary w-100" />
+                    </div>
+                </div>
             </form>
             
             <table className='table table-primary table-striped mt-3'>
