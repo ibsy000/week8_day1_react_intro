@@ -28,7 +28,7 @@ function App(props) {
                     <Route path='/' element={<ButtonCounter />} />
                     <Route path='/standings' element={<RacersClass />} />
                     <Route path='/register' element={<Register flashMessage={flashMessage}/>} />
-                    <Route path='/login' element={<Login />} />
+                    <Route path='/login' element={<Login flashMessage={flashMessage}/>} />
                 </Routes>
             </div> 
         </> 

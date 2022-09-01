@@ -1,9 +1,34 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-export default function Login() {
-    const handleSubmit = e => {
+export default function Login(props) {
+
+    let navigate = useNavigate()
+
+    const handleSubmit = async e => {
         e.preventDefault()
-        console.log(e)
+
+        let username = e.target.username.value
+        let password = e.target.password.value
+
+        let myHeaders = new Headers()
+        myHeaders.append('Authorization', 'Basic ' + btoa(`${username}:${password}`))
+
+        let response = await fetch('http://localhost:5000/api/token', {headers:myHeaders})
+        if (response.ok){
+
+            let data = await response.json()
+    
+            // Store the token and expiration in localStorage
+            localStorage.setItem('token', data.token)
+            localStorage.setItem('expiration', data.token_expiration)
+    
+            // Flash success massage and navigate back to home
+            props.flashMessage('You have successfully logged in', 'success')
+            navigate('/')
+        } else {
+            props.flashMessage('Your username and/or password are incorrect','danger')
+        }
     }
   return (
     <>
