@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom'
 import Register from './components/Register';
 import AlertMessage from './components/AlertMessage';
 import { useState } from 'react'
+import Login from './components/Login';
 
 
 function App(props) {
@@ -27,6 +28,7 @@ function App(props) {
                     <Route path='/' element={<ButtonCounter />} />
                     <Route path='/standings' element={<RacersClass />} />
                     <Route path='/register' element={<Register flashMessage={flashMessage}/>} />
+                    <Route path='/login' element={<Login />} />
                 </Routes>
             </div> 
         </> 
