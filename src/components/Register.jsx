@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export default function Register() {
+export default function Register(props) {
 
     let navigate = useNavigate()
 
@@ -13,7 +13,7 @@ export default function Register() {
         let password = e.target.password.value
         let confirmPass = e.target.confirmPass.value
         if (password !== confirmPass){
-            console.log('Passwords do not match')
+            props.flashMessage('Your passwords do not match', 'danger')
         } else {
             console.log('Passwords do match')
             // Set up request to Flask App
@@ -36,7 +36,7 @@ export default function Register() {
                     if (data.error){
                         console.error(data.error)
                     } else {
-                        console.log(data)
+                        props.flashMessage('You have successfully registered', 'success')
                         navigate('/')
                     }
                 })
