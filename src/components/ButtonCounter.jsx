@@ -13,7 +13,6 @@ export default function ButtonCounter() {
     const [count, setCount] = useState(0)
 
     function handleClick(step){
-        console.log('Clicked')
         setCount(count + step)
     }
 

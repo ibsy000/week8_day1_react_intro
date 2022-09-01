@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 export default class RacersClass extends Component { // Component is a base class and we are overriding the render() method
-    constructor(props){
+    constructor(props){ // instantiate class
         super(props) // constructor always calls super(props)
         this.state = { // this.state works in the same way as useState
             racers: [],
@@ -22,7 +22,7 @@ export default class RacersClass extends Component { // Component is a base clas
     }
     // the useEffect() method is the same as componentDidMount and comonentDidUpdate put together
     componentDidUpdate(prevProps, prevState){ // equivalent to useEffect() method
-        if (prevState.round != this.state.round || prevState.season != this.state.season){
+        if (prevState.round !== this.state.round || prevState.season !== this.state.season){
             fetch(`http://ergast.com/api/f1/${this.state.season}/${this.state.round}/driverStandings.json`)
             .then(res => res.json())
             .then(data => {

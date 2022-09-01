@@ -1,6 +1,7 @@
 // rfc -- react function component
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Navbar(props) {
     return (
@@ -12,9 +13,9 @@ export default function Navbar(props) {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav">
-                    <a className="nav-link active" aria-current="page" href="/">Home</a>
-                    <a className="nav-link" href="/">Features</a>
-                    <a className="nav-link" href="/">Pricing</a>
+                    <Link className="nav-link" to="/">Home</Link>
+                    <Link className="nav-link" to="/standings">Standings</Link>
+                    <Link className="nav-link" to="/register">Register</Link>
                     <a className="nav-link" href="/">Enabled</a>
                 </div>
                 </div>

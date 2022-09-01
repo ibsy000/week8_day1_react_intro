@@ -7,7 +7,7 @@ export default function Racers(props) {
     const [season, setSeason] = useState(2022)
     const [round, setRound] = useState(1)
 
-     // Create an effect -> function to execure after every render
+     // Create an effect -> function to execute after every render
     useEffect(() => {
         console.log('useEffect effect callback executed')
         fetch(`http://ergast.com/api/f1/${season}/${round}/driverStandings.json`)

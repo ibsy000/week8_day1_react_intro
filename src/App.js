@@ -1,8 +1,9 @@
-import { useState } from 'react'
 import ButtonCounter from './components/ButtonCounter';
 import Navbar from "./components/Navbar";
-import Racers from './components/Racers';
+// import Racers from './components/Racers';
 import RacersClass from './components/RacersClass'
+import { Routes, Route } from 'react-router-dom'
+import Register from './components/Register';
 
 
 function App(props) {
@@ -11,9 +12,11 @@ function App(props) {
         <>
             <Navbar name = 'Brian' city = 'Chicago' />
             <div className = 'container'>
-                <ButtonCounter />
-                {/* <Racers /> */}
-                <RacersClass />
+                <Routes>
+                    <Route path='/' element={<ButtonCounter />} />
+                    <Route path='/standings' element={<RacersClass />} />
+                    <Route path='/register' element={<Register />} />
+                </Routes>
             </div> 
         </> 
     );
