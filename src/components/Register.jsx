@@ -1,15 +1,51 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
 
+    let navigate = useNavigate()
+
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(e)
+        // console.log(e)
+
+        // Check that the passwords match
+        let password = e.target.password.value
+        let confirmPass = e.target.confirmPass.value
+        if (password !== confirmPass){
+            console.log('Passwords do not match')
+        } else {
+            console.log('Passwords do match')
+            // Set up request to Flask App
+            let myHeaders = new Headers() // allows us to work with headers on a request
+            myHeaders.append('Content-Type', 'application/json') // takes in name and value
+
+            let formData = JSON.stringify({ // used to take a json object and turn it into a json string
+                username: e.target.username.value,
+                email: e.target.email.value,
+                password: password // we got password already at start
+            })
+
+            fetch('http://localhost:5000/api/users', {
+                method: 'POST',
+                headers: myHeaders,
+                body: formData
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error){
+                        console.error(data.error)
+                    } else {
+                        console.log(data)
+                        navigate('/')
+                    }
+                })
+        }
     }
   return (
     <>
         <h4 className="text-center">Register</h4>
-        
+
         <form onSubmit={handleSubmit}>
             <div className='form-group'>
                     
