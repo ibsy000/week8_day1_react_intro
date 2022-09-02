@@ -66,7 +66,8 @@ export default function Register(props) {
                     name='confirmPass' />
 
                 {/* <button/> or <input/> is the same */}
-                <input type="submit" className='btn btn-primary w-100 mt-3' value='Register' />
+                <input type="submit" className='btn w-100 mt-3 text-light' value='Register' 
+                    style={{backgroundColor: '#5b8e7d'}}/>
 
             </div>
         </form>

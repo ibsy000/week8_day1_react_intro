@@ -64,12 +64,13 @@ export default class RacersClass extends Component { // Component is a base clas
                 </div>
                 <div className="row">
                     <div className='col'>
-                        <input type="submit" value="Submit" className="btn btn-primary w-100" />
+                        <input type="submit" value="Submit" className="btn w-100 text-light" 
+                            style={{backgroundColor: '#5b8e7d'}}/>
                     </div>
                 </div>
             </form>
             {/* { this.state.racers.length ? (insert table here) : (null) } */}
-            <table className='table table-primary table-striped mt-3'>
+            <table className='table table-secondary table-striped mt-3'>
                 <thead>
                     <tr>
                         {tableHeaders.map((th, i) => <th key={i}>{th}</th>)}

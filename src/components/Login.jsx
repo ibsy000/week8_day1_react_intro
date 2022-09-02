@@ -22,6 +22,9 @@ export default function Login(props) {
             // Store the token and expiration in localStorage
             localStorage.setItem('token', data.token)
             localStorage.setItem('expiration', data.token_expiration)
+
+            // Change the loggedIn state to true
+            props.login()
     
             // Flash success massage and navigate back to home
             props.flashMessage('You have successfully logged in', 'success')
@@ -46,7 +49,8 @@ export default function Login(props) {
                     name='password' />
 
                 {/* <button/> or <input/> is the same */}
-                <input type="submit" className='btn btn-primary w-100 mt-3' value='Login' />
+                <input type="submit" className='btn w-100 mt-3 text-light' value='Login' 
+                    style={{backgroundColor: '#5b8e7d'}}/>
 
             </div>
         </form>
