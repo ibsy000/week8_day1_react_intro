@@ -16,7 +16,7 @@ export default function Login(props) {
 
         let response = await fetch('http://localhost:5000/api/token', {headers:myHeaders})
         if (response.ok){
-
+            
             let data = await response.json()
     
             // Store the token and expiration in localStorage

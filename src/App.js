@@ -34,7 +34,7 @@ function App(props) {
 
     return (
         <>
-            <Navbar name = 'Brian' city = 'Chicago' logout={logout} login={login} />
+            <Navbar name = 'Brian' city = 'Chicago' logout={logout} />
             <div className = 'container'>
                 {message ? <AlertMessage message={message} category={category} 
                     flashMessage={flashMessage} /> : null}
@@ -45,7 +45,7 @@ function App(props) {
                     <Route path='/register' element={<Register flashMessage={flashMessage}/>} />
                     <Route path='/login' element={<Login flashMessage={flashMessage} login={login}/>} />
                     <Route path='/create-post' element={<CreatePost flashMessage={flashMessage} 
-                        login={login}/>} />
+                        loggedIn={loggedIn}/>} />
                 </Routes>
             </div> 
         </> 
